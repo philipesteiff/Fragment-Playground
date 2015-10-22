@@ -13,6 +13,6 @@ public class MainActivity extends BaseNavigationDrawerActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        FragmentUtils.replaceFragment(getSupportFragmentManager(), Example1Fragment.newInstance(), R.id.frame_home_container, false);
+        FragmentUtils.replaceFragment(getSupportFragmentManager(), Example1Fragment.newInstance(), R.id.frame_main_container, false);
     }
 }

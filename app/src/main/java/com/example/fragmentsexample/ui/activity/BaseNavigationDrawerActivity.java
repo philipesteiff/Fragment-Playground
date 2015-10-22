@@ -27,11 +27,11 @@ public class BaseNavigationDrawerActivity extends BaseActivity {
 
     @Bind(R.id.toolbar)
     Toolbar toolbar;
-    @Bind(R.id.frame_home_container)
+    @Bind(R.id.frame_main_container)
     FrameLayout frameHomeContainer;
-    @Bind(R.id.navigation_home_view)
+    @Bind(R.id.navigation_main_view)
     NavigationView navigationHomeView;
-    @Bind(R.id.drawer_home)
+    @Bind(R.id.drawer_main)
     DrawerLayout drawerHome;
     private ActionBarDrawerToggle drawerToggle;
     @Bind(R.id.text_profile_view_name)
@@ -117,7 +117,7 @@ public class BaseNavigationDrawerActivity extends BaseActivity {
     }
 
     public void changeFragment(final BaseFragment baseFragment) {
-        FragmentUtils.replaceFragment(getSupportFragmentManager(), baseFragment, R.id.frame_home_container, false);
+        FragmentUtils.replaceFragment(getSupportFragmentManager(), baseFragment, R.id.frame_main_container, false);
     }
 
 
