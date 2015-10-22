@@ -1,4 +1,4 @@
-package com.example.fragmentsexample;
+package com.example.fragmentsexample.ui.fragment;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -10,6 +10,8 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.example.fragmentsexample.R;
+
 import java.util.UUID;
 
 import butterknife.Bind;
@@ -19,9 +21,9 @@ import butterknife.OnClick;
 /**
  * Created by philipesteiff on 10/9/15.
  */
-public class DummyFragment extends Fragment {
+public class Example2Fragment extends BaseFragment {
 
-    public static final String TAG = "DummyFragment";
+    public static final String TAG = "Example2Fragment";
     public static final String ARG_TITLE = "ARG_TITLE";
 
     @Bind(R.id.text_test)
@@ -31,8 +33,8 @@ public class DummyFragment extends Fragment {
     EditText editTextTest;
 
     // - Padrão comum para inicializar fragments com argumentos
-    public static DummyFragment newInstance(final String title) {
-        DummyFragment fragment = new DummyFragment();
+    public static Example2Fragment newInstance(final String title) {
+        Example2Fragment fragment = new Example2Fragment();
         Bundle args = new Bundle();
         args.putString(ARG_TITLE, title);
         fragment.setArguments(args);
@@ -56,20 +58,12 @@ public class DummyFragment extends Fragment {
         super.onCreate(savedInstanceState);
     }
 
-    // - É chamado para o fragment criar sua propria view.
-    // - Retornando null o fragment passa a não ter view.
-    @Nullable
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.dummy_fragment, container, false);
-        ButterKnife.bind(this, view);
-        return view;
-    }
 
     // - Normalmente utilizado para setar valores e listeners as views.
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        ButterKnife.bind(this, view);
         textViewTest.setText(getArguments().getString(ARG_TITLE));
     }
 
@@ -85,5 +79,16 @@ public class DummyFragment extends Fragment {
     public void OnChangeTextClick(View view) {
         editTextTest.setText(UUID.randomUUID().toString());
     }
+
+    @Override
+    protected int getLayoutResource() {
+        return R.layout.fragment_example_2;
+    }
+
+    @Override
+    public String tag() {
+        return Example2Fragment.class.getSimpleName();
+    }
+
 
 }
