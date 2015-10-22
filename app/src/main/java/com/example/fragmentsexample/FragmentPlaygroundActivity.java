@@ -18,8 +18,8 @@ import butterknife.OnClick;
  * ~ O que são fragments?
  * Fragments representam uma porção de tela, modularizando sua tela em pequenas partes. Um Fragment deve sempre
  * ser incorporado a uma Activity e seu lifecycle é diretamente afetada pela Activity que o hospeda.
- * <p>
- * <p>
+ * <p/>
+ * <p/>
  * ~ Vantagens
  * + Reutilização:
  */
@@ -54,7 +54,7 @@ public class FragmentPlaygroundActivity extends AppCompatActivity {
     @OnClick(R.id.add)
     public void onAddClick(View view) {
         Fragment fragment = DummyFragment.newInstance("Meu Fragment");
-        if(enableRetainInstance)
+        if (enableRetainInstance)
             fragment.setRetainInstance(true);
 
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
@@ -67,7 +67,7 @@ public class FragmentPlaygroundActivity extends AppCompatActivity {
     @OnClick(R.id.attach)
     public void onAttachClick(View view) {
         Fragment fragment = getSupportFragmentManager().findFragmentByTag(DummyFragment.TAG);
-        if(enableRetainInstance)
+        if (enableRetainInstance)
             fragment.setRetainInstance(true);
 
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
@@ -91,7 +91,7 @@ public class FragmentPlaygroundActivity extends AppCompatActivity {
     @OnClick(R.id.detach)
     public void onDetachClick(View view) {
         Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.viewgroup_fragment_container);
-        if(enableRetainInstance)
+        if (enableRetainInstance)
             fragment.setRetainInstance(true);
 
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
