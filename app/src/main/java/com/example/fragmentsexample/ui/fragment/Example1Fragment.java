@@ -69,6 +69,7 @@ public class Example1Fragment extends BaseFragment {
     }
 
 
+    @SuppressWarnings("unused")
     @OnClick(R.id.add)
     public void onAddClick(View view) {
         Fragment fragment = Example2Fragment.newInstance("Meu Fragment");
@@ -82,6 +83,7 @@ public class Example1Fragment extends BaseFragment {
         fragmentTransaction.commit();
     }
 
+    @SuppressWarnings("unused")
     @OnClick(R.id.attach)
     public void onAttachClick(View view) {
         Fragment fragment = getFragmentManager().findFragmentByTag(Example2Fragment.TAG);
@@ -95,6 +97,7 @@ public class Example1Fragment extends BaseFragment {
         fragmentTransaction.commit();
     }
 
+    @SuppressWarnings("unused")
     @OnClick(R.id.remove)
     public void onRemoveClick(View view) {
         Fragment fragment = getFragmentManager().findFragmentByTag(Example2Fragment.TAG);
@@ -105,7 +108,7 @@ public class Example1Fragment extends BaseFragment {
         fragmentTransaction.commit();
     }
 
-
+    @SuppressWarnings("unused")
     @OnClick(R.id.detach)
     public void onDetachClick(View view) {
         Fragment fragment = getFragmentManager().findFragmentById(R.id.viewgroup_fragment_container);
@@ -119,6 +122,7 @@ public class Example1Fragment extends BaseFragment {
         fragmentTransaction.commit();
     }
 
+    @SuppressWarnings("unused")
     @OnClick(R.id.replace)
     public void onReplaceClick(View view) {
         FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
@@ -128,11 +132,13 @@ public class Example1Fragment extends BaseFragment {
         fragmentTransaction.commit();
     }
 
+    @SuppressWarnings("unused")
     @OnClick(R.id.pop_back_stack)
     public void onPopBackStackClick(View view) {
         getFragmentManager().popBackStack();
     }
 
+    @SuppressWarnings("unused")
     @OnClick(R.id.debug)
     public void onDebugClick() {
 
