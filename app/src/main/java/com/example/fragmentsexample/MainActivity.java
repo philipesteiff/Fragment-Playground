@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
         fragmentTransaction.commit();
     }
 
-g
+
     @OnClick(R.id.detach)
     public void onDetachClick(View view) {
         Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.viewgroup_fragment_container);
