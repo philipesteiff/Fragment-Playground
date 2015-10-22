@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Fragment Playground</string>
+
+    <string name="open">Menu</string>
+    <string name="close">FragmentsExample</string>
+    <string name="example_1">Exemplo 1</string>
+    <string name="example_2">Exemplo 2</string>
+
 </resources>

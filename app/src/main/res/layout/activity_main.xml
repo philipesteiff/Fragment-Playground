@@ -1,106 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_home"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:fitsSystemWindows="true"
-    android:orientation="vertical"
-    tools:context=".MainActivity">
+    android:layout_height="match_parent">
 
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="?attr/colorPrimary"
-        app:popupTheme="@style/AppTheme.PopupOverlay" />
-
-    <ScrollView
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <LinearLayout
-            android:id="@+id/linear_main_container"
+        <include layout="@layout/toolbar" />
+
+        <FrameLayout
+            android:id="@+id/frame_home_container"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fitsSystemWindows="true"
-            android:orientation="vertical">
+            android:layout_height="fill_parent"
+            android:layout_below="@+id/toolbar" />
 
-            <LinearLayout
-                android:id="@+id/viewgroup_fragment_container"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical" />
+    </RelativeLayout>
 
-            <Button
-                android:id="@+id/add"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="add" />
+    <android.support.design.widget.NavigationView
+        android:id="@+id/navigation_home_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:headerLayout="@layout/view_drawer_header"
+        android:layout_gravity="start"
+        app:menu="@menu/drawer" />
 
-            <Button
-                android:id="@+id/attach"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="attach" />
-
-            <Button
-                android:id="@+id/remove"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="remove" />
-
-            <Button
-                android:id="@+id/detach"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="detach" />
-
-            <Button
-                android:id="@+id/replace"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="replace" />
-
-
-            <Button
-                android:id="@+id/pop_back_stack"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="popBackStack" />
-
-            <Button
-                android:id="@+id/debug"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="debug" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Adicionar ao BackStack" />
-
-            <ToggleButton
-                android:id="@+id/toogle_button_back_stack"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="10dp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Ativar RetainInstance" />
-
-            <ToggleButton
-                android:id="@+id/toogle_button_retain_instance"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-        </LinearLayout>
-
-    </ScrollView>
-
-</LinearLayout>
+</android.support.v4.widget.DrawerLayout>

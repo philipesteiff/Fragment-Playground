@@ -1,14 +1,16 @@
-package com.example.fragmentsexample;
+package com.example.fragmentsexample.ui.fragment;
 
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.ToggleButton;
+
+import com.example.fragmentsexample.R;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -22,9 +24,11 @@ import butterknife.OnClick;
  * <p/>
  * ~ Vantagens
  * + Reutilização:
+ * + Stack
+ * +
  */
 
-public class FragmentPlaygroundActivity extends AppCompatActivity {
+public class Example1Fragment extends BaseFragment {
 
     private boolean enableAddToBackStack;
     private boolean enableRetainInstance;
@@ -38,12 +42,15 @@ public class FragmentPlaygroundActivity extends AppCompatActivity {
     @Bind(R.id.toogle_button_retain_instance)
     ToggleButton toggleButtonRetainInstance;
 
+
+    public static Example1Fragment newInstance() {
+        return new Example1Fragment();
+    }
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        ButterKnife.bind(this);
-        setSupportActionBar(toolbar);
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        ButterKnife.bind(this, getView());
         toggleButtonBackStack.setOnCheckedChangeListener(onAddToBackStackCheckedChangeListener);
         toggleButtonRetainInstance.setOnCheckedChangeListener(onRetainInstanceCheckedChangeListener);
 
@@ -51,14 +58,25 @@ public class FragmentPlaygroundActivity extends AppCompatActivity {
         FragmentManager.enableDebugLogging(true);
     }
 
+    @Override
+    protected int getLayoutResource() {
+        return R.layout.fragment_example_1;
+    }
+
+    @Override
+    public String tag() {
+        return Example1Fragment.class.getSimpleName();
+    }
+
+
     @OnClick(R.id.add)
     public void onAddClick(View view) {
-        Fragment fragment = DummyFragment.newInstance("Meu Fragment");
+        Fragment fragment = Example2Fragment.newInstance("Meu Fragment");
         if (enableRetainInstance)
             fragment.setRetainInstance(true);
 
-        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.add(R.id.viewgroup_fragment_container, fragment, DummyFragment.TAG);
+        FragmentTransaction fragmentTransaction =getFragmentManager().beginTransaction();
+        fragmentTransaction.add(R.id.viewgroup_fragment_container, fragment, Example2Fragment.TAG);
         if (enableAddToBackStack)
             fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
@@ -66,11 +84,11 @@ public class FragmentPlaygroundActivity extends AppCompatActivity {
 
     @OnClick(R.id.attach)
     public void onAttachClick(View view) {
-        Fragment fragment = getSupportFragmentManager().findFragmentByTag(DummyFragment.TAG);
+        Fragment fragment = getFragmentManager().findFragmentByTag(Example2Fragment.TAG);
         if (enableRetainInstance)
             fragment.setRetainInstance(true);
 
-        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
         fragmentTransaction.attach(fragment);
         if (enableAddToBackStack)
             fragmentTransaction.addToBackStack(null);
@@ -79,8 +97,8 @@ public class FragmentPlaygroundActivity extends AppCompatActivity {
 
     @OnClick(R.id.remove)
     public void onRemoveClick(View view) {
-        Fragment fragment = getSupportFragmentManager().findFragmentByTag(DummyFragment.TAG);
-        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        Fragment fragment = getFragmentManager().findFragmentByTag(Example2Fragment.TAG);
+        FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
         fragmentTransaction.remove(fragment);
         if (enableAddToBackStack)
             fragmentTransaction.addToBackStack(null);
@@ -90,11 +108,11 @@ public class FragmentPlaygroundActivity extends AppCompatActivity {
 
     @OnClick(R.id.detach)
     public void onDetachClick(View view) {
-        Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.viewgroup_fragment_container);
+        Fragment fragment = getFragmentManager().findFragmentById(R.id.viewgroup_fragment_container);
         if (enableRetainInstance)
             fragment.setRetainInstance(true);
 
-        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
         fragmentTransaction.detach(fragment);
         if (enableAddToBackStack)
             fragmentTransaction.addToBackStack(null);
@@ -103,8 +121,8 @@ public class FragmentPlaygroundActivity extends AppCompatActivity {
 
     @OnClick(R.id.replace)
     public void onReplaceClick(View view) {
-        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.replace(R.id.viewgroup_fragment_container, DummyFragment.newInstance("Novo Fragment"), DummyFragment.TAG);
+        FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.viewgroup_fragment_container, Example2Fragment.newInstance("Novo Fragment"), Example2Fragment.TAG);
         if (enableAddToBackStack)
             fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
@@ -112,7 +130,7 @@ public class FragmentPlaygroundActivity extends AppCompatActivity {
 
     @OnClick(R.id.pop_back_stack)
     public void onPopBackStackClick(View view) {
-        getSupportFragmentManager().popBackStack();
+        getFragmentManager().popBackStack();
     }
 
     @OnClick(R.id.debug)
