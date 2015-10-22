@@ -5,7 +5,6 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.ToggleButton;
@@ -20,8 +19,8 @@ import butterknife.OnClick;
  * ~ O que são fragments?
  * Fragments representam uma porção de tela, modularizando sua tela em pequenas partes. Um Fragment deve sempre
  * ser incorporado a uma Activity e seu lifecycle é diretamente afetada pela Activity que o hospeda.
- * <p/>
- * <p/>
+ * <p>
+ * <p>
  * ~ Vantagens
  * + Reutilização:
  * + Stack
@@ -29,6 +28,8 @@ import butterknife.OnClick;
  */
 
 public class Example1Fragment extends BaseFragment {
+
+    public static final String TAG = Example1Fragment.class.getSimpleName();
 
     private boolean enableAddToBackStack;
     private boolean enableRetainInstance;
@@ -60,11 +61,6 @@ public class Example1Fragment extends BaseFragment {
         return R.layout.fragment_example_1;
     }
 
-    @Override
-    public String tag() {
-        return Example1Fragment.class.getSimpleName();
-    }
-
 
     @SuppressWarnings("unused")
     @OnClick(R.id.add)
@@ -73,7 +69,7 @@ public class Example1Fragment extends BaseFragment {
         if (enableRetainInstance)
             fragment.setRetainInstance(true);
 
-        FragmentTransaction fragmentTransaction =getFragmentManager().beginTransaction();
+        FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
         fragmentTransaction.add(R.id.viewgroup_fragment_container, fragment, Example2Fragment.TAG);
         if (enableAddToBackStack)
             fragmentTransaction.addToBackStack(null);

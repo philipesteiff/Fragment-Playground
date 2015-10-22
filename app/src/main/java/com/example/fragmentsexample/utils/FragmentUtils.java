@@ -5,7 +5,7 @@ import android.support.annotation.AnimRes;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import com.example.fragmentsexample.ui.fragment.*;
+import com.example.fragmentsexample.ui.fragment.BaseFragment;
 
 public class FragmentUtils {
 
@@ -57,22 +57,22 @@ public class FragmentUtils {
     }
 
 
-    public static void replaceFragment(final FragmentManager fragmentManager, final BaseFragment fragment, final int containerToReplace, final boolean addToBackStack) {
+    public static void replaceFragment(final FragmentManager fragmentManager, final BaseFragment fragment, final String tag, final int containerToReplace, final boolean addToBackStack) {
         FragmentTransaction fragmentTransaction = ensureTransaction(fragmentManager);
-        fragmentTransaction.replace(containerToReplace, fragment, fragment.tag());
+        fragmentTransaction.replace(containerToReplace, fragment, tag);
         commitTransactions(fragmentTransaction, addToBackStack);
     }
 
-    public static void replaceFragmentWithAnimation(final FragmentTransaction fragmentTransaction, final BaseFragment fragment, final int containerToReplace, final boolean addToBackStack, @AnimRes final int animationEnter, @AnimRes final int animationExit) {
+    public static void replaceFragmentWithAnimation(final FragmentTransaction fragmentTransaction, final BaseFragment fragment, final String tag, final int containerToReplace, final boolean addToBackStack, @AnimRes final int animationEnter, @AnimRes final int animationExit) {
         if (addToBackStack)
-            fragmentTransaction.addToBackStack(fragment.tag());
+            fragmentTransaction.addToBackStack(tag);
         fragmentTransaction.setCustomAnimations(animationEnter, animationExit);
         fragmentTransaction.replace(containerToReplace, fragment).commit();
     }
 
-    public static void replaceFragmentWithAnimation(final FragmentTransaction fragmentTransaction, final BaseFragment fragment, final int containerToReplace, final boolean addToBackStack, @AnimRes final int animationEnter, @AnimRes final int animationExit, @AnimRes final int animationPopEnter, @AnimRes final int animationPopExit) {
+    public static void replaceFragmentWithAnimation(final FragmentTransaction fragmentTransaction, final BaseFragment fragment, final String tag, final int containerToReplace, final boolean addToBackStack, @AnimRes final int animationEnter, @AnimRes final int animationExit, @AnimRes final int animationPopEnter, @AnimRes final int animationPopExit) {
         if (addToBackStack)
-            fragmentTransaction.addToBackStack(fragment.tag());
+            fragmentTransaction.addToBackStack(tag);
         fragmentTransaction.setCustomAnimations(animationEnter, animationExit, animationPopEnter, animationPopExit);
         fragmentTransaction.replace(containerToReplace, fragment).commit();
     }

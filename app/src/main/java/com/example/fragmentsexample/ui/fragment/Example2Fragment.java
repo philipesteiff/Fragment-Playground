@@ -3,10 +3,7 @@ package com.example.fragmentsexample.ui.fragment;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -23,7 +20,7 @@ import butterknife.OnClick;
  */
 public class Example2Fragment extends BaseFragment {
 
-    public static final String TAG = "Example2Fragment";
+    public static final String TAG = Example2Fragment.class.getSimpleName();
     public static final String ARG_TITLE = "ARG_TITLE";
 
     @Bind(R.id.text_test)
@@ -84,11 +81,5 @@ public class Example2Fragment extends BaseFragment {
     protected int getLayoutResource() {
         return R.layout.fragment_example_2;
     }
-
-    @Override
-    public String tag() {
-        return Example2Fragment.class.getSimpleName();
-    }
-
 
 }

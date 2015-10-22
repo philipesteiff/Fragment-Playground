@@ -6,7 +6,6 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import com.example.fragmentsexample.ui.activity.BaseActivity;
 
 /**
  * Created by msanches on 22/10/15.
@@ -20,13 +19,5 @@ public abstract class BaseFragment extends Fragment {
         return view;
     }
 
-
     protected abstract int getLayoutResource();
-
-    public abstract String tag();
-
-    public BaseActivity getBaseActivity() {
-        return (BaseActivity) getActivity();
-    }
-
 }

@@ -83,10 +83,10 @@ public class BaseNavigationDrawerActivity extends BaseActivity {
                 drawerHome.closeDrawers();
                 switch (menuItem.getItemId()) {
                     case R.id.drawer_example_1:
-                        changeFragment(Example1Fragment.newInstance());
+                        changeFragment(Example1Fragment.newInstance(), Example1Fragment.TAG);
                         break;
                     case R.id.drawer_example_2:
-                        changeFragment(Example2Fragment.newInstance("Título"));
+                        changeFragment(Example2Fragment.newInstance("Título"), Example2Fragment.TAG);
                         break;
                 }
                 return true;
@@ -116,8 +116,8 @@ public class BaseNavigationDrawerActivity extends BaseActivity {
         drawerHome.setDrawerListener(drawerToggle);
     }
 
-    public void changeFragment(final BaseFragment baseFragment) {
-        FragmentUtils.replaceFragment(getSupportFragmentManager(), baseFragment, R.id.frame_main_container, false);
+    public void changeFragment(final BaseFragment baseFragment, final String tag) {
+        FragmentUtils.replaceFragment(getSupportFragmentManager(), baseFragment, tag, R.id.frame_main_container, false);
     }
 
 
