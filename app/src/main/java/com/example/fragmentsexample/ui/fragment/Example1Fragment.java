@@ -33,9 +33,6 @@ public class Example1Fragment extends BaseFragment {
     private boolean enableAddToBackStack;
     private boolean enableRetainInstance;
 
-    @Bind(R.id.toolbar)
-    Toolbar toolbar;
-
     @Bind(R.id.toogle_button_back_stack)
     ToggleButton toggleButtonBackStack;
 
