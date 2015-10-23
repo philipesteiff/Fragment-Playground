@@ -31,7 +31,6 @@ public class DummyFragment extends Fragment {
     @Bind(R.id.edit_test)
     EditText editTextTest;
 
-    // - Padrão comum para inicializar fragments com argumentos
     public static DummyFragment newInstance(final String title) {
         DummyFragment fragment = new DummyFragment();
         Bundle args = new Bundle();
@@ -40,27 +39,18 @@ public class DummyFragment extends Fragment {
         return fragment;
     }
 
-    // - Primeiro metodo chamado, antes da criacao de qualquer view.
-    // - Chamado quando a instancia do fragment é associado a activity.
-    // - Não é garantido que a activity foi completamente inicializada.
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
         Log.d(TAG, "Ciclo de vida: onAttach()");
     }
 
-    // - Segundo método chamado, antes das views do fragment serem criadas.
-    // - O onCreate é chamado quando a instancia do Fragment é criada ou recriada.
-    // - O método onCreate é chamado quando a instância do Fragment está sendo criado, ou recriado.
-    // - Não é garantido que a activity foi completamente inicializada.
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Log.d(TAG, "Ciclo de vida: onCreate()");
     }
 
-    // - É chamado para o fragment criar sua propria view.
-    // - Retornando null o fragment passa a não ter view.
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -70,7 +60,6 @@ public class DummyFragment extends Fragment {
         return view;
     }
 
-    // - Normalmente utilizado para setar valores e listeners as views.
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);

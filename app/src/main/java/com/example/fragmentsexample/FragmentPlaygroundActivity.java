@@ -14,16 +14,6 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-/**
- * ~ O que são fragments?
- * Fragments representam uma porção de tela, modularizando sua tela em pequenas partes. Um Fragment deve sempre
- * ser incorporado a uma Activity e seu lifecycle é diretamente afetada pela Activity que o hospeda.
- * <p/>
- * <p/>
- * ~ Vantagens
- * + Reutilização:
- */
-
 public class FragmentPlaygroundActivity extends AppCompatActivity {
 
     private boolean enableAddToBackStack;
