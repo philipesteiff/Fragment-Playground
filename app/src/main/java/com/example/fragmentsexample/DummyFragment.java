@@ -4,6 +4,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -45,6 +46,7 @@ public class DummyFragment extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
+        Log.d(TAG, "Ciclo de vida: onAttach()");
     }
 
     // - Segundo método chamado, antes das views do fragment serem criadas.
@@ -54,6 +56,7 @@ public class DummyFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.d(TAG, "Ciclo de vida: onCreate()");
     }
 
     // - É chamado para o fragment criar sua propria view.
@@ -61,6 +64,7 @@ public class DummyFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        Log.d(TAG, "Ciclo de vida: onCreateView()");
         View view = inflater.inflate(R.layout.dummy_fragment, container, false);
         ButterKnife.bind(this, view);
         return view;
@@ -79,6 +83,19 @@ public class DummyFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        Log.d(TAG, "Ciclo de vida: onActivityCreated()");
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        Log.d(TAG, "Ciclo de vida: onDestroyView()");
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        Log.d(TAG, "Ciclo de vida: onDestroy()");
     }
 
     @OnClick(R.id.button_change_test)
