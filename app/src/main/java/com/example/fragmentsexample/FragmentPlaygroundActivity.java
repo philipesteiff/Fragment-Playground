@@ -34,11 +34,12 @@ public class FragmentPlaygroundActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
         setSupportActionBar(toolbar);
-        toggleButtonBackStack.setOnCheckedChangeListener(onAddToBackStackCheckedChangeListener);
-        toggleButtonRetainInstance.setOnCheckedChangeListener(onRetainInstanceCheckedChangeListener);
 
         // Ativa o log de transações do fragmentManager
         FragmentManager.enableDebugLogging(true);
+
+        toggleButtonBackStack.setOnCheckedChangeListener(onAddToBackStackCheckedChangeListener);
+        toggleButtonRetainInstance.setOnCheckedChangeListener(onRetainInstanceCheckedChangeListener);
     }
 
     @OnClick(R.id.add)
